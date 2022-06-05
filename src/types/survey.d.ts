@@ -4,7 +4,7 @@ type QuestionType = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE' | 'OPEN';
 
   type ID = number | string;
 
-  interface Answer {
+  interface ClosedQuestionAnswer {
     id: ID;
     questionID: ID;
     text: string;
@@ -14,19 +14,19 @@ type QuestionType = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE' | 'OPEN';
     type: 'SINGLE_CHOICE';
     id: ID;
     questionText: string;
-    possibleAnswers: Array<Answer>;
+    possibleAnswers: Array<ClosedQuestionAnswer>;
     answer: Answer;
   } | {
     type: 'MULTIPLE_CHOICE';
     id: ID;
     questionText: string;
-    possibleAnswers: Array<Answer>;
-    answer: Array<Answer>;
+    possibleAnswers: Array<ClosedQuestionAnswer>;
+    answer: Array<ClosedQuestionAnswer>;
   } | {
     type: 'OPEN';
     id: ID;
     questionText: string;
-    answer: Answer;
+    answer: string;
   }
 
   /**

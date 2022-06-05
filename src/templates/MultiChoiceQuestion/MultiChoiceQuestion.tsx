@@ -1,6 +1,7 @@
 import QuestionHeader from "@comic/molecules/QuestionHeader";
 import ClosedQuestionChoices from "@comic/organisms/ClosedQuestionChoices";
 
+
 interface MultiChoiceQuestionProps {
   title: string;
   questionText: string;
@@ -14,6 +15,7 @@ interface MultiChoiceQuestionProps {
 const MultiChoiceQuestion = ({ 
   title, questionText, possibleAnswers
  }: MultiChoiceQuestionProps) => {
+
   return (
     <article>
       <QuestionHeader title={title} questionText={questionText} />

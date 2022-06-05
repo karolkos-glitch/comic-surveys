@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import MultiChoiceQuestion from '@comic/templates/MultiChoiceQuestion';
+import QuestionsProvider from '@comic/providers/SurveyQuestionsProvider';
 
 
 export default {
@@ -9,7 +10,7 @@ export default {
 } as ComponentMeta<typeof MultiChoiceQuestion>;
 
 const Template: ComponentStory<typeof MultiChoiceQuestion> = (args) => (
-  <MultiChoiceQuestion {...args} />
+  <QuestionsProvider><MultiChoiceQuestion {...args} /></QuestionsProvider>
 );
 
 export const View = Template.bind({});

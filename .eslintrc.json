@@ -4,6 +4,6 @@
     "max-lines": ["error", 100],
     "max-len": ["error", { "code": 80 }],
     "max-params": ["error", 3],
-    "complexity": ["warn", 2]
+    "complexity": ["warn", 3]
   }
 }

@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import OpenQuestion from '@comic/templates/OpenQuestion';
+import QuestionsProvider from '@comic/providers/SurveyQuestionsProvider';
 
 
 export default {
@@ -9,12 +10,15 @@ export default {
 } as ComponentMeta<typeof OpenQuestion>;
 
 const Template: ComponentStory<typeof OpenQuestion> = (args) => (
-  <OpenQuestion {...args} />
+  <QuestionsProvider>
+    <OpenQuestion {...args} />
+  </QuestionsProvider>
 );
 
 export const View = Template.bind({});
 
 View.args = {
+  questionId: 3,
   title: 'Pytanie numer 5',
   questionText: 'Jak zyć dobrze?',
   value: 'Nie znam odpowiedzi jeszcze na to pytanie.'
