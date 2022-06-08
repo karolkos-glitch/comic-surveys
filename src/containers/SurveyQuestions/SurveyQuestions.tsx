@@ -2,7 +2,8 @@ import OpenQuestion from "@comic/templates/OpenQuestion";
 import { useSurveyContext } from "@comic/providers/SurveyQuestionsProvider";
 
 const SurveyQuestions = () => {
-  const [{ questions }] = useSurveyContext();
+  const [{questions}, dispatch] = useSurveyContext();
+  const finishTheSurvey = () => dispatch({type: 'FINISH_SURVEY'})
 
   return (<section>
     <h1>Ankieta</h1>
@@ -19,6 +20,7 @@ const SurveyQuestions = () => {
         />
       )}
     )}
+    <button onClick={finishTheSurvey}>Send answers</button>
     </section>)
 }
 
