@@ -4,20 +4,7 @@ on:
   pull_request
 
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 16.13.2
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.13.2
-        cache: 'yarn'
-    - name: Install dependencies
-      run: yarn
-
   test:
-    needs: install
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -37,7 +24,7 @@ jobs:
         test-command: "yarn test"
 
   lint:
-    needs: install
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -51,8 +38,8 @@ jobs:
     - name: Run eslint
       run: yarn lint
 
-  build:
-    needs: install
+  build-with-typecheck:
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
