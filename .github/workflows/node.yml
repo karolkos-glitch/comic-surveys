@@ -17,6 +17,7 @@ jobs:
       run: yarn
 
   test:
+    needs: install
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -28,7 +29,12 @@ jobs:
     - name: Install dependencies
       run: yarn
     - name: Run tests
-      run: yarn test
+      uses: mattallty/jest-github-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        # this is just an example, this could be any command that will trigger jest
+        test-command: "yarn test"
 
   lint:
     needs: install
