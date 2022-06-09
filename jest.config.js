@@ -5,6 +5,7 @@ const config = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   collectCoverage: true,
+  collectCoverageFrom: ["./src/**"],
   coverageDirectory: 'coverage',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
