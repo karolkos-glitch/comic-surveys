@@ -1,1 +1,1 @@
-export const getNumber = (a: number) => a
+export const getNumber = (a: number) => a;

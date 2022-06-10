@@ -1,26 +1,28 @@
-import { createContext, useContext } from 'react'
-import useSurveyQuestions from './useSurveyQuestions'
+import { createContext, useContext } from 'react';
+import useSurveyQuestions from './useSurveyQuestions';
 
 const SurveyQuestionsContext = createContext<
     ReturnType<typeof useSurveyQuestions> | undefined
->(undefined)
+>(undefined);
 
 export const useSurveyContext = () => {
-    const ctx = useContext(SurveyQuestionsContext)
+    const ctx = useContext(SurveyQuestionsContext);
     if (!ctx) {
-        throw new Error('You cannot use this hook without QuestionsProvider!!!')
+        throw new Error(
+            'You cannot use this hook without QuestionsProvider!!!'
+        );
     }
-    return ctx
-}
+    return ctx;
+};
 
 const QuestionsProvider = ({ children }: { children: React.ReactNode }) => {
-    const value = useSurveyQuestions()
+    const value = useSurveyQuestions();
 
     return (
         <SurveyQuestionsContext.Provider value={value}>
             {children}
         </SurveyQuestionsContext.Provider>
-    )
-}
+    );
+};
 
-export default QuestionsProvider
+export default QuestionsProvider;

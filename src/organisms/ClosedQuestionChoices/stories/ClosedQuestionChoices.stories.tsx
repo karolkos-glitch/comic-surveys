@@ -1,17 +1,17 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import ClosedQuestionChoices from '@comic/organisms/ClosedQuestionChoices'
+import ClosedQuestionChoices from '@comic/organisms/ClosedQuestionChoices';
 
 export default {
     title: 'Organisms/Closed Question Choices',
     component: ClosedQuestionChoices,
-} as ComponentMeta<typeof ClosedQuestionChoices>
+} as ComponentMeta<typeof ClosedQuestionChoices>;
 
 const Template: ComponentStory<typeof ClosedQuestionChoices> = (args) => (
     <ClosedQuestionChoices {...args} />
-)
+);
 
-export const View = Template.bind({})
+export const View = Template.bind({});
 
 View.args = {
     choices: [
@@ -20,6 +20,6 @@ View.args = {
         { id: 3, text: 'Małe doświadczenie', chosen: false },
         { id: 4, text: 'Zerowe doświadczenie', chosen: false },
     ],
-}
+};
 
-View.storyName = 'Closed Question Choices'
+View.storyName = 'Closed Question Choices';

@@ -1,8 +1,8 @@
-import Checkbox from '@comic/atoms/Checkbox'
+import Checkbox from '@comic/atoms/Checkbox';
 
 interface ClosedQuestionAnswerProps {
-    text: string
-    chosen: boolean
+    text: string;
+    chosen: boolean;
 }
 
 const ClosedQuestionAnswer = ({ text, chosen }: ClosedQuestionAnswerProps) => {
@@ -11,7 +11,7 @@ const ClosedQuestionAnswer = ({ text, chosen }: ClosedQuestionAnswerProps) => {
             <Checkbox checked={chosen} />
             <span>{text}</span>
         </div>
-    )
-}
+    );
+};
 
-export default ClosedQuestionAnswer
+export default ClosedQuestionAnswer;

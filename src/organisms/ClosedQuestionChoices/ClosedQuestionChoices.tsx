@@ -1,11 +1,11 @@
-import ClosedQuestionAnswer from '@comic/molecules/ClosedQuestionAnswer'
+import ClosedQuestionAnswer from '@comic/molecules/ClosedQuestionAnswer';
 
 interface ClosedQuestionChoicesProps {
     choices: Array<{
-        id: string | number
-        text: string
-        chosen: boolean
-    }>
+        id: string | number;
+        text: string;
+        chosen: boolean;
+    }>;
 }
 
 const ClosedQuestionChoices = ({ choices }: ClosedQuestionChoicesProps) => {
@@ -15,7 +15,7 @@ const ClosedQuestionChoices = ({ choices }: ClosedQuestionChoicesProps) => {
                 <ClosedQuestionAnswer key={id} text={text} chosen={chosen} />
             ))}
         </div>
-    )
-}
+    );
+};
 
-export default ClosedQuestionChoices
+export default ClosedQuestionChoices;

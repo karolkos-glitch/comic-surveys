@@ -1,6 +1,6 @@
 interface QuestionHeaderProps {
-    title: string
-    questionText: string
+    title: string;
+    questionText: string;
 }
 
 const QuestionHeader = ({ title, questionText }: QuestionHeaderProps) => {
@@ -9,7 +9,7 @@ const QuestionHeader = ({ title, questionText }: QuestionHeaderProps) => {
             <h2>{title}</h2>
             <p>{questionText}</p>
         </>
-    )
-}
+    );
+};
 
-export default QuestionHeader
+export default QuestionHeader;

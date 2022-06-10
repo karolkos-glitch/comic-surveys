@@ -1,19 +1,19 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import SurverQuestions from '@comic/containers/SurveyQuestions'
-import QuestionsProvider from '@comic/providers/SurveyQuestionsProvider'
+import SurverQuestions from '@comic/containers/SurveyQuestions';
+import QuestionsProvider from '@comic/providers/SurveyQuestionsProvider';
 
 export default {
     title: 'Containers/Survey Questions',
     component: SurverQuestions,
-} as ComponentMeta<typeof SurverQuestions>
+} as ComponentMeta<typeof SurverQuestions>;
 
 const Template: ComponentStory<typeof SurverQuestions> = () => (
     <QuestionsProvider>
         <SurverQuestions />
     </QuestionsProvider>
-)
+);
 
-export const View = Template.bind({})
+export const View = Template.bind({});
 
-View.storyName = 'Survey Questions'
+View.storyName = 'Survey Questions';
