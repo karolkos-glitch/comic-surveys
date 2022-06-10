@@ -1,9 +1,15 @@
 {
-  "extends": "next/core-web-vitals",
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "max-lines": ["error", 100],
     "max-len": ["error", { "code": 80 }],
     "max-params": ["error", 3],
     "complexity": ["warn", 3]
-  }
+  },
+  "extends": [
+    "next",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ]
 }
