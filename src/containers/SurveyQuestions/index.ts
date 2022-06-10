@@ -1,1 +1,1 @@
-export {default} from './SurveyQuestions';
+export { default } from './SurveyQuestions'

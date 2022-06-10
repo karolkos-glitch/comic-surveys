@@ -1,1 +1,1 @@
-export { default } from './MultiChoiceQuestion';
+export { default } from './MultiChoiceQuestion'
