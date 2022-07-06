@@ -5,18 +5,6 @@ import Head from 'next/head';
 
 
 const Surveys: NextPage<{ surveys: Prisma.Survey[]}> = ({ surveys }) => {
-  const createSurvey = async () => {
-    console.log('Hello')
-    try {
-      const res = await fetch('api/surveys', {
-      method: 'POST',
-      });
-      console.log(res.json());
-    }catch(e){
-      console.error(e);
-    }
-  };
-
   return (
     <>
       <Head>

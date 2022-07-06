@@ -1,4 +1,4 @@
-interface QuestionHeaderProps {
+export interface QuestionHeaderProps {
     title: string;
     questionText: string;
 }
