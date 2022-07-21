@@ -23,7 +23,7 @@ const Button = ({ disabled, children, onClick}:  ButtonProps) => {
       listStyle: 'none',
       margin: 0,
       outline: 'none',
-      padding: '30px 50px',
+      padding: '8px 16px',
       position: 'relative',
       textAlign: 'center',
       touchAction: 'manipulation',
