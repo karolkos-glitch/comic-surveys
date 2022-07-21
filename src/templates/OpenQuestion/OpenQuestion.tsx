@@ -30,6 +30,7 @@ const OpenQuestion = ({
         <article>
             <QuestionHeader title={title} questionText={questionText} />
             <TextField
+                data-testid={title}
                 placeholder="Odpowiedz tutaj"
                 value={value}
                 onChange={onChangeHandler}
