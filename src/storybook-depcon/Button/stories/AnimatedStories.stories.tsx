@@ -1,7 +1,7 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { screen, userEvent } from '@storybook/testing-library';
-
+import { expect } from '@storybook/jest';
 import SurveyQuestions from '@comic/containers/SurveyQuestions';
 import QuestionsProvider from '@comic/providers/SurveyQuestionsProvider';
 
@@ -27,25 +27,29 @@ View.play = async () => {
 
   const textfields= await screen.findAllByPlaceholderText('Odpowiedz tutaj');
 
-  if(textfields[0]){
-    await userEvent.type(textfields[0], 'Nie mam pojecia', {
+  expect(textfields[0]).toBeTruthy();
+  await userEvent.type(textfields[0], 'Nie mam pojecia', {
       delay: 100,
     });
-  }
+  expect(textfields[1]).toBeTruthy();
 
-  if(textfields[1]){
-    await userEvent.type(textfields[1], 'Jasne, ze goryl', {
+  await userEvent.type(textfields[1], 'Jasne, ze goryl', {
       delay: 300,
     });
-  }
+  
 
-  if(textfields[2]){
-    await userEvent.type(textfields[2], 'Prawiek i inne czasy', {
+  expect(textfields[2]).toBeTruthy();
+
+  await userEvent.type(textfields[2], 'Prawiek i inne czasy', {
       delay: 200,
     });
-  }
+  
+
+  // expect(textfields[3]).toBeTruthy();
 
   const button = await screen.findByRole('button');
 
   userEvent.click(button);
+
+  
 }

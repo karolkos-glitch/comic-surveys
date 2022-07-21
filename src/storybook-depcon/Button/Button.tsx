@@ -4,16 +4,22 @@ interface ButtonProps {
   disabled?: boolean;
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  color?: string;
+  backgroundColor?: string;
 };
 
-const Button = ({ disabled, children, onClick}:  ButtonProps) => {
+const Button = ({ 
+  disabled, children, onClick, 
+  color = "white",
+  backgroundColor = "#EA4C89" 
+}:  ButtonProps) => {
   return (
     <button 
       style={{
-        backgroundColor: '#EA4C89',
+        backgroundColor,
         borderRadius: '8px',
         borderStyle: 'none',
-        color: '#FFFFFF',
+        color,
         cursor: 'pointer',
         display: 'inline-block',
         fontSize: '14px',

@@ -3,7 +3,7 @@ import FetchingPosts from '../FetchingPosts';
 import { rest } from 'msw';
 
 export default {
-  title: 'Depcon Story View/HTTP Requests',
+  title: 'Depcon/HTTP Requests',
   component: FetchingPosts
 } as ComponentMeta<typeof FetchingPosts>;
 

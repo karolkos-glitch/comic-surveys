@@ -21,9 +21,18 @@ View.args = {
 View.storyName = 'Standard';
 
 
-export const Disabled = Template.bind({});
+export const Green = Template.bind({});
 
-Disabled.args = {
-  disabled: true,
-  children: 'Siema'
+Green.args = {
+  children: 'Siema',
+  onClick: action('My button was clicked!'),
+  backgroundColor: 'green'
 }
+View.storyName = 'Standard';
+
+
+export const Inaccessible = () => (
+  <button style={{ backgroundColor: 'red', color: 'darkRed' }}>
+    Inaccessible button
+  </button>
+);
