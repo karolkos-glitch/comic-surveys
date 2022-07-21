@@ -1,0 +1,52 @@
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="Docs/Testing/Testing react-query" />
+
+# Testing with React query
+
+Everything testing react-query related is in `tests/renderWithQuery.tsx` file.
+
+## Testing custom hooks
+
+If we want to use [renderHook](https://testing-library.com/docs/react-testing-library/api#renderhook), you need pass **createQueryWrapper** function as a wrapper parameter:
+
+```
+    const {result} = renderHook(() => useRooms(), {
+      wrapper: createQueryWrapper(),
+    });
+```
+
+## Testing component
+
+To execute render function from @testing-library, wrapped by **QueryClientProvider** and customized for testing **queryClient**, use **renderWithClient** function.
+
+```ts
+import {QueryClient, QueryClientProvider} from 'react-query';
+
+import {render} from 'tests/test-utils';
+
+const createTestQueryClient = () =>
+  new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  });
+
+export function renderWithClient(ui: React.ReactElement) {
+  const testQueryClient = createTestQueryClient();
+  const {rerender, ...result} = render(
+    <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>,
+  );
+  return {
+    ...result,
+    rerender: (rerenderUi: React.ReactElement) =>
+      rerender(
+        <QueryClientProvider client={testQueryClient}>
+          {rerenderUi}
+        </QueryClientProvider>,
+      ),
+  };
+}
+```

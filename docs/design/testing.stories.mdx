@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Docs/Testing/Mocking Request with MSW" />
+
+# Mocking Request in tests with Mock Service Worker
+
+In order to return dummy backend responses in our testing enviroment, we use [Mock Service Worker](https://mswjs.io/docs/).
+
+## Prepare mock data 
+
+Add some dummy data. It will be used as if it was from the backend. In `tests/mockApi/sampleData` create javascript objects.
+Use them `tests/mockApi/sampleData`
+
+## Make handlers
+
+Create [request handler](https://mswjs.io/docs/basics/request-handler) that specifies mocked response. Global handlers are placed in array **handlers** - check `sfe/tests/mockApi/handlers.ts`.
+
+Example for `api/accounts/users/me/`:
+
+```ts
+const userHandlerSuccess = rest.get(
+  'api/accounts/users/me/',
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        email: 'kamil.slimak@gmail.com',
+        name: 'kamslim',
+        token: 'token2332token',
+      }),
+    );
+  },
+);
+```
+
+## Setup the worker for tests
+
+Setup the server in `tests/mockApi/server.ts`:
+
+```ts
+import {setupServer} from 'msw/node';
+
+import {handlers} from './handlers'; 
+
+const mswServer = setupServer(...handlers);
+
+export default mswServer;
+```
+
+Use server in `tests/setupTests.ts`:
+
+```ts
+// Establish API mocking before all tests.
+beforeAll(() => mswServer.listen());
+// // Reset any request handlers that we may add during the tests,
+// // so they don't affect other tests.
+afterEach(() => mswServer.resetHandlers());
+// // Clean up after the tests are finished.
+afterAll(() => mswServer.close());
+```
+
+
+## Mock response once 
+
+Use server method [use](https://mswjs.io/docs/api/setup-server/use) in test
+```ts
+  test('error useRooms hook', async () => {
+    mswServer.use(roomsHandlerError);
+
+    const {result} = renderHook(() => useRooms(), {
+      wrapper: createQueryWrapper(),
+    });
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+  });
+```
+
+Implementation is placed in `tests/mockApi` directory.
