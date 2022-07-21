@@ -1,0 +1,67 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Survey {
+  id        Int            @id @default(autoincrement())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  name      String         @db.VarChar(255)
+  questions Question[]
+  results   SurveyResult[]
+}
+
+model Question {
+  id             Int                 @id @default(autoincrement())
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  questionText   String              @db.VarChar(255)
+  type           String              @db.VarChar(255)
+  answers        AnswerProposition[]
+  survey         Survey              @relation(fields: [surveyId], references: [id])
+  surveyId       Int
+  QuestionResults QuestionResult[]
+}
+
+model AnswerProposition {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  content    String   @db.VarChar(255)
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
+}
+
+model SurveyResult {
+  id              Int              @id @default(autoincrement())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  survey          Survey           @relation(fields: [surveyId], references: [id])
+  surveyId        Int
+  questionResults QuestionResult[]
+}
+
+model QuestionResult {
+  id             Int          @id @default(autoincrement())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  answers        Answer[]
+  surveyResult   SurveyResult @relation(fields: [surveyResultId], references: [id])
+  surveyResultId Int
+  question       Question     @relation(fields: [questionId], references: [id])
+  questionId     Int
+}
+
+model Answer {
+  id               Int             @id @default(autoincrement())
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  QuestionResult   QuestionResult @relation(fields: [questionResultId], references: [id])
+  questionResultId Int
+  content          String
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
