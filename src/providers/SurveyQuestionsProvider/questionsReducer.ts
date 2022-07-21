@@ -4,19 +4,19 @@ export const initialState: QuestionsReducerState = {
         {
             id: 1,
             type: 'OPEN',
-            questionText: 'Jaki jest sens zycia',
+            questionText: 'Jaki jest sens zycia?',
             answer: '',
         },
         {
             id: 2,
             type: 'OPEN',
-            questionText: 'Lubisz boksik?',
+            questionText: 'Kto wygra walkę - goryl czy lew?',
             answer: '',
         },
         {
             id: 3,
             type: 'OPEN',
-            questionText: 'Jak oceniasz swoją formę?',
+            questionText: 'Jaka jest twoja ulubiona ksiązka Olgi Tokarczuk?',
             answer: '',
         },
     ],

@@ -4,7 +4,7 @@ import Button from '..';
 
 
 export default {
-  title: 'Depcon Story View/Button',
+  title: 'Depcon/Button Stories',
   component: Button
 } as ComponentMeta<typeof Button>;
 

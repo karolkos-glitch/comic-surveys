@@ -12,7 +12,9 @@ const SurveyQuestions = () => {
                 if (question.type !== 'OPEN') return null;
                 const { id, questionText, answer } = question;
                 return (
+
                     <OpenQuestion
+                        data-testid={`question-${index+1}`}
                         key={id}
                         questionId={id}
                         title={`Pytanie nr ${index + 1}`}
