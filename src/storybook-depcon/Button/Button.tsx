@@ -29,7 +29,7 @@ const Button = ({
         listStyle: 'none',
         margin: 0,
         outline: 'none',
-        padding: '8px 16px',
+        padding: '200px 160px',
         position: 'relative',
         textAlign: 'center',
         touchAction: 'manipulation',
